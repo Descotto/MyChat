@@ -9,7 +9,10 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
+const apiKey = process.env.APIKEY
 console.log('works ', SECRET_SESSION);
+
+
 
 
 app.set('view engine', 'ejs');
@@ -47,6 +50,11 @@ app.get('/', (req, res) => {
 
 app.use('/auth', require('./controllers/auth'));
 
+// Add this above /auth controllers
+app.get('/profile', isLoggedIn, (req, res) => {
+  const { id, name, email } = req.user.get(); 
+  res.render('profile', { id, name, email });
+});
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
