@@ -9,6 +9,7 @@
   </head>
   <body>
     <%- include('partials/alerts') %> 
+    <li><a href="/chat">Chat</a></li>
     <% if (!currentUser) {%>
       <li><a href="/auth/signup">Signup</a></li>
       <li><a href="/auth/login">Login</a></li>

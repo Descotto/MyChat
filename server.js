@@ -15,6 +15,8 @@ console.log('works ', SECRET_SESSION);
 
 
 
+
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -49,6 +51,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/chat', require('./controllers/chat'));
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
@@ -57,8 +60,8 @@ app.get('/profile', isLoggedIn, (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => {
+const appserver = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
 
-module.exports = server;
+module.exports = appserver;
