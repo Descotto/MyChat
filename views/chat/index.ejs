@@ -1,10 +1,17 @@
 <main>
     <header>
       <div class="user-count">0</div>
-      <h1>Tokyo Chat</h1>
+      <h1>MyChat</h1>
     </header>
+
+    <h2>Welcome: <%= name %> </h2>
   
     <section class="chat">
+      <% messages.forEach(message => { %>
+        
+
+     <% } %> 
+
       <p><strong>Tommy</strong>: I did not hit her!</p>
       <p><strong>Mark</strong>: ...</p>
       <p><strong>Tommy</strong>: I did not! it's bullshit!</p>
@@ -12,7 +19,7 @@
     </section>
   
     <form action="POST">
-      <input type="text" placeholder="Say something nice" />
+      <input type="text" placeholder="Write a message" />
       <button>Send</button>
     </form>
   </main>
