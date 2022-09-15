@@ -20,21 +20,7 @@ router.get('/', isLoggedIn, (req, res) => {
     const { id, name, email } = req.user.get(); 
     res.render('chat', { id, name, email, messages});
   });
-//=====
-
-
-  let user = db.user.name;
-  if (!user) {
   
-    // Ask for the username if there is none set already
-    user = prompt('Choose a username:');
-    if (!user) {
-      alert('We cannot work with you like that!');
-    }
-  }
-
-
-
 
 
 module.exports = router;
