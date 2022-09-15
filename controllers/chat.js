@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const { default: axios } = require('axios');
 
 
 const updateCounter = ctx => {
@@ -20,7 +21,9 @@ router.get('/', isLoggedIn, (req, res) => {
     const { id, name, email } = req.user.get(); 
     res.render('chat', { id, name, email, messages});
   });
-  
+
+
+
 
 
 module.exports = router;

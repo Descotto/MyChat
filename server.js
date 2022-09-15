@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const axios = require('axios');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -44,7 +45,11 @@ app.use((req, res, next) => {
 });
 
 
+//==== EMOJI API =====
 
+axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {
+     
+}).then((response) => {console.log('response ',response);})
 
 app.get('/', (req, res) => {
   res.render('index');
