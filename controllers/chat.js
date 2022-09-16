@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn');
-const { default: axios } = require('axios');
+const axios = require('axios');
+
+const SECRET_SESSION = process.env.SECRET_SESSION;
+const apiKey = process.env.APIKEY
+
+
 
 
 const updateCounter = ctx => {
@@ -20,8 +25,28 @@ router.get('/', isLoggedIn, (req, res) => {
  
     const { id, name, email } = req.user.get(); 
     res.render('chat', { id, name, email, messages});
+    
   });
 
+
+
+
+
+  router.post('/send', async (req, res) => {
+    // we now have access to the user info (req.body);
+    let content = req.body.chat; // goes and us access to whatever key/value inside of the object
+    let id = req.user.id;
+   db.message.create({
+     content: content,
+     userID: id
+    }).then(() => {
+    res.redirect('/chat');
+   }).catch(err => {
+    console.log(err);
+   })
+  
+   
+  })
 
 
 
