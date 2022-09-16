@@ -46,10 +46,20 @@ app.use((req, res, next) => {
 
 
 //==== EMOJI API =====
+let emojis = []; // == empty array to load emojis in
+axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
+.then((response) => {
 
-axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {
-     
-}).then((response) => {console.log('response ',response);})
+  let data = response.data;
+  console.log(data);
+  for (let i = 0; i < 100; i++) {
+    emojis.push(data[i]);
+
+  }
+
+}).catch(function(error) {
+  console.log('error ',error);
+});
 
 app.get('/', (req, res) => {
   res.render('index');
