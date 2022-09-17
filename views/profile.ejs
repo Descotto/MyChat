@@ -16,7 +16,8 @@
 
  <div id="blog">
     <% blog.forEach(msg => { %>
-        <div><%= msg.content %></div>
+   
+        <div><%- msg.content %></div>
         <button>edit</button>
         <button>delete</button>
     <% }) %> 
