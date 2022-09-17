@@ -45,8 +45,6 @@ router.get('/', isLoggedIn, (req, res) => {
    }).catch(err => {
     console.log(err);
    })
-  
-   
   })
 
 

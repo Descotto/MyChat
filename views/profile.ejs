@@ -1,7 +1,23 @@
-<h2>Profile Page</h2>
+<h2>MyPage</h2>
 
- <h3>Welcome to your PROFILE</h3>
+ <h3>Welcome <%= name %> </h3>
 
- <p>Id: <%= id %></p>
- <p>Name: <%= name %></p>
- <p>Email: <%= email %></p>
+
+
+
+
+
+
+
+ <form action="/profile/blog" method="post" name="blog">
+    <input type="text" name="blog" placeholder="Seen anything cool lately?">
+    <button type="submit">post</button>
+ </form>
+
+ <div id="blog">
+    <% blog.forEach(msg => { %>
+        <div><%= msg.content %></div>
+        <button>edit</button>
+        <button>delete</button>
+    <% }) %> 
+</div>
