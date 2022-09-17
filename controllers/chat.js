@@ -19,14 +19,15 @@ const sendMessage = ctx => {
   ctx.io.emit('message', ctx.data);
 };
 
-let messages = db.message.content;
+
 
 router.get('/', isLoggedIn, (req, res) => {
  
-    const { id, name, email } = req.user.get(); 
-    res.render('chat', { id, name, email, messages});
-    
-  });
+    const { id, name, email } = req.user.get();
+    db.message.findAll({order: [['createdAt', 'DESC']], limit:10, offset:0, include:[db.user]}).then((messages) => {
+        res.render('chat', { id, name, email, messages});
+    })
+});
 
 
 
@@ -38,7 +39,7 @@ router.get('/', isLoggedIn, (req, res) => {
     let id = req.user.id;
    db.message.create({
      content: content,
-     userID: id
+     userId: id
     }).then(() => {
     res.redirect('/chat');
    }).catch(err => {
