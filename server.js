@@ -51,7 +51,6 @@ axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
 .then((response) => {
 
   let data = response.data;
-  console.log(data);
   for (let i = 0; i < 100; i++) {
     emojis.push(data[i]);
 
@@ -67,12 +66,9 @@ app.get('/', (req, res) => {
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/chat', require('./controllers/chat'));
-
+app.use('/profile', require('./controllers/profile'));
 // Add this above /auth controllers
-app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
-  res.render('profile', { id, name, email });
-});
+
 
 const PORT = process.env.PORT || 3000;
 const appserver = app.listen(PORT, () => {
