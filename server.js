@@ -45,27 +45,27 @@ app.use((req, res, next) => {
 });
 
 
-//==== EMOJI API =====
+// //==== EMOJI API =====
 
-axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
-.then((response) => {
+// axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
+// .then((response) => {
 
-  let data = response.data;
-  for (let i = 0; i < 100; i++) {
-    emojis.push({
-      character: data[i].character,
-      codePoint: data[i].codePoint,
-      group: data[i].group,
-      slug: data[i].slug,
-      subgroup: data[i].subgroup,
-      unicodeName: data[i].unicodeName
-  });
+//   let data = response.data;
+//   for (let i = 0; i < 100; i++) {
+//     emojis.push({
+//       character: data[i].character,
+//       codePoint: data[i].codePoint,
+//       group: data[i].group,
+//       slug: data[i].slug,
+//       subgroup: data[i].subgroup,
+//       unicodeName: data[i].unicodeName
+//   });
 
-  }
+//   }
 
-}).catch(function(error) {
-  console.log('error ',error);
-});
+// }).catch(function(error) {
+//   console.log('error ',error);
+// });
 
 app.get('/', (req, res) => {
   res.render('index');
