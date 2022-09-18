@@ -3,22 +3,31 @@
  <h3>Welcome <%= name %> </h3>
 
 
+ <div>
+    <div><img src="" alt=""></div>
+    <h2><%= name %>'s Page </h2>
+ </div>
 
 
 
 
 
 
+<div id="emojiTable">
  <form action="/profile/blog" method="post" name="blog">
-    <input type="text" name="blog" placeholder="Seen anything cool lately?">
+    <input type="text" name="blog" placeholder="Seen anything cool?">
+    <input type="button" id="emojiBtn">emoji</input>
     <button type="submit">post</button>
  </form>
-
+</div>
  <div id="blog">
-    <% blog.forEach(msg => { %>
+    <% let blogPost = blog.reverse(); %> 
+    <% blogPost.forEach(msg => { %>
    
-        <div><%- msg.content %></div>
-        <button>edit</button>
-        <button>delete</button>
+        <div class="posts" style="border: dotted;"><%- msg.content %><br>
+        <button class="edit">edit</button><span></span>
+        <button class="delete">delete</button><span></span>
+        
+    </div>
     <% }) %> 
 </div>

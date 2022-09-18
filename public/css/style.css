@@ -18,22 +18,20 @@ html, body {
   padding: 0;
 }
 
-main {
+.chatBox {
   width: calc(100% - 20px);
   max-width: 500px;
   margin: 0 auto;
   font-family: Helvetica, Arial, Sans, sans-serif;
 }
 
-h1, .user-count {
+.user-count {
   margin: 0;
   padding: 10px 0;
   font-size: 32px;
-}
-
-.user-count {
   float: right;
 }
+
 
 .chat {
   content: '';
@@ -47,7 +45,7 @@ h1, .user-count {
   margin: 0 0 5px 0;
 }
 
-input, button {
+.chatInputs {
   width: 100%;
   font: inherit;
   background: #fff;
@@ -56,7 +54,7 @@ input, button {
   padding: 5px 10px;
 }
 
-button:hover {
+.button:hover {
   cursor: pointer;
   background: #ddd;
 }
@@ -65,11 +63,26 @@ button:hover {
   .chat {
     height: calc(100vh - 140px);
   }
-  input {
+  .chatInputs {
     width: calc(100% - 160px);
   }
-  button {
+  .button {
     float: right;
     width: 150px;
   }
+}
+.posts {
+  margin: 0 auto;
+  max-width: 700px;
+  background-color: aliceblue;
+}
+#blog {
+
+}
+.delete {
+  color: red;
+  border-radius: 45%;
+}
+.edit {
+  border-radius: 45%;
 }

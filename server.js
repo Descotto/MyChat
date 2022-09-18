@@ -13,7 +13,7 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 const apiKey = process.env.APIKEY
 console.log('works ', SECRET_SESSION);
 
-let emojis = []; // == empty array to load emojis in
+// let emojis = []; // == empty array to load emojis in
 
 
 
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 });
 
 
-// //==== EMOJI API =====
+//==== EMOJI API =====
 
 // axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
 // .then((response) => {
