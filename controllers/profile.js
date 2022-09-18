@@ -4,6 +4,7 @@ const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const axios = require('axios');
 const { where } = require('sequelize');
+const { Router } = require('express');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 
@@ -20,7 +21,7 @@ router.get('/', isLoggedIn, (req, res) => {
   });
 
 
-
+//=== post new comments
 router.post('/blog', async (req, res) => {
     let content = req.body.blog;
     let id = req.user.id;
@@ -33,5 +34,12 @@ router.post('/blog', async (req, res) => {
        console.log(err);
       })
      });
+
+//edit comments
+Router.get('/profile/edit/:idx', (req, res) => {
+    db.blog.findOne({
+        where: {id: req.params.idx}
+    })
+})
 
 module.exports = router;

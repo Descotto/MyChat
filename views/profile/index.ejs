@@ -13,7 +13,7 @@
 
 
 
-<div id="emojiTable">
+<div id="emojiTable"></div>
  <form action="/profile/blog" method="post" name="blog">
     <input type="text" name="blog" placeholder="Seen anything cool?">
     <input type="button" id="emojiBtn">emoji</input>
@@ -25,9 +25,10 @@
     <% blogPost.forEach(msg => { %>
    
         <div class="posts" style="border: dotted;"><%- msg.content %><br>
-        <button class="edit">edit</button><span></span>
-        <button class="delete">delete</button><span></span>
-        
-    </div>
+        <div class="commentButtons">
+        <form class="commentButtons" action="/profile/edit/<%= msg.id %>"><button class="edit">edit</button></form>
+        <form class="commentButtons" action="/profile/delete/<%= msg.id %>"><button class="delete">delete</button></form>
+        </div>
+
     <% }) %> 
 </div>
