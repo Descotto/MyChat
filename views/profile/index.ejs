@@ -26,8 +26,8 @@
    
         <div class="posts" style="border: dotted;"><%- msg.content %><br>
         <div class="commentButtons">
-        <form class="commentButtons" action="/profile/edit/<%= msg.id %>"><button class="edit">edit</button></form>
-        <form class="commentButtons" action="/profile/delete/<%= msg.id %>"><button class="delete">delete</button></form>
+         <button class="edit"><a href="/profile/edit/<%= msg.id %>">edit</a></button>
+
         </div>
 
     <% }) %> 
