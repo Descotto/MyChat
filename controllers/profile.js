@@ -38,9 +38,9 @@ router.post('/blog', async (req, res) => {
 router.get('/edit/:idx', isLoggedIn, (req, res) => {
     db.blog.findOne({
         where: {id: req.params.idx}
-    }).then(blog => {
-        console.log('console log', blog);
-        res.render('profile/edit', {blog: blog});
+    }).then(log => {
+        console.log('console log', log);
+        res.render('profile/edit', { log });
     })
 })
 

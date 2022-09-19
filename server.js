@@ -67,7 +67,7 @@ app.use((req, res, next) => {
 //   console.log('error ',error);
 // });
 
-app.get('/', (req, res) => {
+app.get('/', isLoggedIn, (req, res) => {
   res.render('index');
 });
 

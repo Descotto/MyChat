@@ -9,13 +9,19 @@
   </head>
   <body>
     <%- include('partials/alerts') %> 
-    <li><a href="/chat">Chat</a></li>
+   
     <% if (!currentUser) {%>
-      <li><a href="/auth/signup">Signup</a></li>
-      <li><a href="/auth/login">Login</a></li>
+    <ul id="linksId">
+      <li class="linklist"><a href="/auth/signup">Signup</a></li>
+      <li class="linklist"><a href="/auth/login">Login</a></li>
+      <li class="linklist"><a href="/chat">Chat</a></li>
+    </ul>
   <% } else { %>
-      <li><a href="/auth/logout">Logout</a></li>
-      <li><a href="/profile">Profile</a></li>
+    <ul id="linksId">
+      <li class="linklist"><a href="/profile">Profile</a></li>
+      <li class="linklist"><a href="/chat">Chat</a></li>
+      <li class="linklist"><a href="/auth/logout">Logout</a></li>
+    </ul>
   <% } %>
     <%- body %> 
     <script src="/js/main.js"></script>
