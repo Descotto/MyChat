@@ -34,14 +34,33 @@ router.post('/blog', async (req, res) => {
       })
      });
 
-//edit comments
-router.get('/edit/:idx', isLoggedIn, (req, res) => {
+//====edit comments
+// first grab the comment
+
+router.get('/edit/:idx', isLoggedIn, async (req, res) => {
     db.blog.findOne({
         where: {id: req.params.idx}
     }).then(log => {
+        const id = log.id;
+        const content = log.content;
         console.log('console log', log);
-        res.render('profile/edit', { log });
+        res.render('profile/edit', { id, content});
     })
-})
+});
+
+//=== now Edit
+router.put('/:idx', (req, res) => {
+    db.blog.update(
+        {content: req.body.content},
+        {where: { _id: req.params.idx}}
+  )
+    .then((results) => {
+        console.log(results);
+        res.redirect('/');
+    })
+    .catch(err => {
+        console.log('error below: ', err);
+    })
+});
 
 module.exports = router;

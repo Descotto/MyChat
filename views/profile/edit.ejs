@@ -1,3 +1,9 @@
 <h1>edit</h1>
 
-<p><%= log.content %> </p>
+<p><%= content %> </p>
+
+<form method="POST" action=<%=`/edit/${id}/?_method=PUT`%>>
+    <label>Edit</label>
+    <input type="text" name="editContent" value="<%= content %>">
+    <input type="submit">
+</form>
