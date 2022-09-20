@@ -34,6 +34,17 @@ router.post('/blog', async (req, res) => {
       })
      });
 
+//get the comment for delete
+router.get('/delete/:idx', isLoggedIn, (req, res) => {
+    db.blog.findOne({
+        where: {id: req.params.idx}
+    }).then(log => {
+        const id = log.id;
+        const content = log.content;
+        console.log('console log', log);
+        res.render("profile/delete", { id, content});
+    })
+});
 //====edit comments
 // first grab the comment
 
@@ -47,6 +58,7 @@ router.get('/edit/:idx', isLoggedIn, async (req, res) => {
         res.render('profile/edit', { id, content});
     })
 });
+
 
 //=== now Edit
 router.post('/edit/new/:idx', (req, res) => {
@@ -63,5 +75,19 @@ router.post('/edit/new/:idx', (req, res) => {
         console.log('error below: ', err);
     })
 });
+//=== Delete route
+router.post('/delete/dl/:idx', isLoggedIn, function(req, res, next){
+    db.blog.findOne({where: {id: req.params.idx}}).then((blog) =>{
+        console.log('blog deleted', blog);
+        blog.destroy();
+    })
+    .then(() => {
+        res.redirect('/profile');
+    }).catch(err => {
+        console.log('CONSOLE>LOG: ', err);
+    });   
+});
+
+//now delete
 
 module.exports = router;
