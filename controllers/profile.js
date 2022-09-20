@@ -49,14 +49,15 @@ router.get('/edit/:idx', isLoggedIn, async (req, res) => {
 });
 
 //=== now Edit
-router.put('/:idx', (req, res) => {
+router.post('/edit/new/:idx', (req, res) => {
+    newContent = JSON.stringify(req.body.editContent)
     db.blog.update(
-        {content: req.body.content},
-        {where: { _id: req.params.idx}}
+        {content: req.body.editContent},
+        {where: { id: req.params.idx}}
   )
     .then((results) => {
         console.log(results);
-        res.redirect('/');
+        res.redirect('/profile');
     })
     .catch(err => {
         console.log('error below: ', err);
