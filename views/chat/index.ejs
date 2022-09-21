@@ -1,11 +1,14 @@
+
+
+<div>
+  <h1>MyChat</h1>
+
+  <h3>hello <%= name %> </h3>
+</div>
 <main class="chatBox">
     <header>
-      <h1>MyChat</h1>
+    <p>Chat Room</p>  
     </header>
-
-    <h3>hello <%= name %> </h3>
-   
-  
     <section class="chat">
       <% let chat = messages.reverse() %> 
       <% messages.forEach(message => { %>
@@ -19,15 +22,15 @@
   
     <form method="POST" name="chat" action="./chat/send" autocomplete="off">
       
-      <button onclick="toggleEmojiDrawer()">Emojis</button>
-      <input type="text" placeholder="Write a message" name="chat" id="input" class="chatInputs"/>
-<div id="drawer" class="emoji-drawer hidden"> 
-  <% emoji.forEach(emo => { %>
-    <div class="emoji" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>"><%= emo.character %> </div>
-<% }) %> 
-</div>
-
-
+      
+      <input type="text" placeholder="Write a message" name="chat" class="chatInputs" id="input"/>
       <button type="submit" class="chatInputs button">Send</button>
     </form>
+
+    <button type="menu" onclick="toggleEmojiDrawer()">Emojis</button>
+    <div id="drawer" class="emoji-drawer hidden"> 
+      <% emoji.forEach(emo => { %>
+        <div class="emoji" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>"><%= emo.character %></div>
+    <% }) %> 
+    </div>
   </main>

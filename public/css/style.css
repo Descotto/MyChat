@@ -61,14 +61,14 @@ html, body {
 
 @media all and (min-width: 500px) {
   .chat {
-    height: calc(100vh - 140px);
+    height: calc(100vh - 160px);
   }
   .chatInputs {
-    width: calc(100% - 160px);
+    width: calc(100% - 180px);
   }
   .button {
     float: right;
-    width: 150px;
+    width: 140px;
   }
 }
 .posts {
@@ -82,9 +82,11 @@ display: inline;
 .delete {
   color: red;
   border-radius: 45%;
+  float: right;
 }
 .edit {
   border-radius: 45%;
+  float: right;
 }
 .commentButtons {
   display: inline;
@@ -100,11 +102,13 @@ display: inline;
 
 
 .emoji-drawer {
+  background-color: gray;
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 
-  width: 100px;
+  width: 400px;
+  max-height: 100px;
 
   margin-bottom: 32px;
   transition: opacity 0.2s;
