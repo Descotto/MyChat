@@ -1,12 +1,15 @@
 <h2>MyPage</h2>
 
- <h3>Welcome <%= name %> </h3>
+<h3>Welcome <%= name %>
+</h3>
 
 
- <div>
-    <div><img src="#" alt="" width="70px" height="80px"></div>
-    <h2><%= name %>'s Page </h2>
- </div>
+<div>
+   <div><img src="#" alt="" width="70px" height="80px"></div>
+   <h2>
+      <%= name %>'s Page
+   </h2>
+</div>
 
 
 
@@ -14,27 +17,29 @@
 
 
 <div id="emojiTable"></div>
- <form action="/profile/blog" method="post" name="blog" autocomplete="off">
-    <input type="text" name="blog" placeholder="Seen anything cool?">
-    <select name="emoji" id="emoji">
-      <% emoji.forEach(emoji => { %>
-        <option value="<%=emoji.slug %>"><%= emoji.character %></option> 
-    <%  }); %> 
-
-    </select>
-    <button type="submit">post</button>
- </form>
+<form action="/profile/blog" method="post" name="blog" autocomplete="off">
+   <input type="text" name="blog" placeholder="Seen anything cool?" id="input">
+   <button type="submit">post</button>
+</form>
+<button type="menu" onclick="toggleEmojiDrawer()">Emojis</button>
+<div id="drawer" class="emoji-drawer hidden" style="width: 100px;">
+   <% emoji.forEach(emo=> { %>
+      <div class="emoji" style="height: 85px;" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>">
+         <%= emo.character %>
+      </div>
+      <% }) %>
 </div>
- <div id="blog">
-    <% let blogPost = blog.reverse(); %> 
-    <% blogPost.forEach(msg => { %>
-   
-        <div class="posts" style="border: dotted;"><%- msg.content %><br>
-        <div class="commentButtons">
-         <button class="edit"><a href="/profile/edit/<%= msg.id %>">Edit</a></button>
-         <button class="delete"><a href="/profile/delete/<%= msg.id %>">Delete</a></button>
-
-        </div>
-
-    <% }) %> 
 </div>
+<div id="blog">
+   <% let blogPost=blog.reverse(); %>
+      <% blogPost.forEach(msg=> { %>
+
+         <div class="posts" style="border: dotted;">
+            <h4><%- msg.content %></h4>
+               <div class="commentButtons">
+                  <button class="edit"><a href="/profile/edit/<%= msg.id %>">Edit</a></button>
+                  <button class="delete"><a href="/profile/delete/<%= msg.id %>">Delete</a></button>
+               </div>
+            </div><br>
+               <% }) %>
+        

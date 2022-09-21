@@ -100,7 +100,6 @@ display: inline;
 }
 
 
-
 .emoji-drawer {
   background-color: gray;
   display: grid;
@@ -108,7 +107,7 @@ display: inline;
   grid-template-columns: repeat(6, 1fr);
 
   width: 400px;
-  max-height: 100px;
+  height: 50px;
 
   margin-bottom: 32px;
   transition: opacity 0.2s;
