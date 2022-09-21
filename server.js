@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
+const db = require('./models');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -45,31 +46,31 @@ app.use((req, res, next) => {
 });
 
 
-//==== EMOJI API =====
 
-// axios.get(`https://emoji-api.com/emojis?access_key=${apiKey}`, (req, res) => {})
-// .then((response) => {
-
-//   let data = response.data;
-//   for (let i = 0; i < 100; i++) {
-//     emojis.push({
-//       character: data[i].character,
-//       codePoint: data[i].codePoint,
-//       group: data[i].group,
-//       slug: data[i].slug,
-//       subgroup: data[i].subgroup,
-//       unicodeName: data[i].unicodeName
-//   });
-
-//   }
-
-// }).catch(function(error) {
-//   console.log('error ',error);
-// });
-
+//=== HOME PAGE ===//
 app.get('/', isLoggedIn, (req, res) => {
-  res.render('index');
+  const { id, name, email } = req.user.get();
+    db.gblog.findAll({order: [['createdAt', 'DESC']], limit:10, offset:0, include:[db.user]}).then((messages) => {
+        res.render('index', { id, name, email, messages});
+    })
+  // res.render('index');
 });
+
+//=== post new global
+app.post('/new', async (req, res) => {
+  let content = req.body.newBlog;
+  let id = req.user.id;
+  let topic = req.body.topic;
+  db.gblog.create({
+      content: content,
+      topic: topic,
+      userId: id
+     }).then(() => {
+     res.redirect('/');
+    }).catch(err => {
+     console.log(err);
+    })
+  });
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/chat', require('./controllers/chat'));

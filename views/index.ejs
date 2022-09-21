@@ -1,2 +1,27 @@
 <h2>Homepage</h2>
 
+
+
+
+<div>
+    <form action="/new/" method="post" name="gblog">
+        <input type="text" name="newBlog" placeholder="Tell the world!">
+        <label for="topic">Topic</label><br>
+        <input type="text" name="topic" placeholder="be cool">
+        <button type="submit">post</button>
+    </form>
+</div>
+    <h3>Global Wall</h3>
+    <div id="gblog">
+        <% messages.forEach(msg => { %>
+            <div class="posts" style="border: dotted;">
+                <%= msg.content %><br>
+                <small>Topic: <%= msg.topic %> </small><br>
+                <p><small>By: <%= name %> </small></p>
+            <div class="commentButtons">
+             <button class="edit"><a href="/profile/edit/<%= msg.id %>">Edit</a></button>
+             <button class="delete"><a href="/profile/delete/<%= msg.id %>">Delete</a></button>
+    
+            </div>
+    
+        <% }) %> 
