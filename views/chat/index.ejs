@@ -1,10 +1,9 @@
 <main class="chatBox">
     <header>
-      <div class="user-count">0</div>
       <h1>MyChat</h1>
     </header>
 
-    <h2>hello <%= name %> </h2>
+    <h3>hello <%= name %> </h3>
    
   
     <section class="chat">
@@ -18,8 +17,17 @@
       <p><strong>Tommy</strong>: oh! hi Mark!</p> -->
     </section>
   
-    <form method="POST" name="chat" action="./chat/send">
-      <input type="text" placeholder="Write a message" name="chat" id="chat" class="chatInputs"/>
+    <form method="POST" name="chat" action="./chat/send" autocomplete="off">
+      
+      <button onclick="toggleEmojiDrawer()">Emojis</button>
+      <input type="text" placeholder="Write a message" name="chat" id="input" class="chatInputs"/>
+<div id="drawer" class="emoji-drawer hidden"> 
+  <% emoji.forEach(emo => { %>
+    <div class="emoji" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>"><%= emo.character %> </div>
+<% }) %> 
+</div>
+
+
       <button type="submit" class="chatInputs button">Send</button>
     </form>
   </main>

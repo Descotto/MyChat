@@ -10,18 +10,21 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 
 
 router.get('/', isLoggedIn, (req, res) => {
-    const { id, name, email } = req.user.get(); 
+    const { id, name, email } = req.user.get();
     db.blog.findAll({ 
         where: {
         userId: req.user.id
     }}).then((blog) => {
-        res.render('profile', { id, name, email, blog}); 
+         db.emoji.findAll().then((emo) => {
+            const emoji = emo.slice(0, 500);
+            res.render('profile', { id, name, email, blog, emoji});
+         });
     })
   });
 
 
 //=== post new comments
-router.post('/blog', async (req, res) => {
+router.post('/blog', isLoggedIn, async (req, res) => {
     let content = req.body.blog;
     let id = req.user.id;
     db.blog.create({

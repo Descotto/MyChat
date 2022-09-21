@@ -9,3 +9,20 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 
 const emojiTable = document.querySelector('#emojiTable');
 
+
+//=== add selected emoji
+function addEmoji(emoji) {
+    let inputEle = document.getElementById('input');
+    
+    inputEle.value += emoji;
+  };
+  
+  function toggleEmojiDrawer() {
+    let drawer = document.getElementById('drawer');
+    
+    if (drawer.classList.contains('hidden')) {
+      drawer.classList.remove('hidden');
+    } else {
+      drawer.classList.add('hidden');
+    }
+  };
