@@ -28,3 +28,5 @@ function addEmoji(emoji) {
       drawer.classList.add('hidden');
     }
   };
+
+

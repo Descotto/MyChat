@@ -11,7 +11,7 @@ Fork & Clone this repo.
 - [ ] In this space below, list **THREE** ideas for your Project 2. For each idea, include [user stories](https://www.atlassian.com/agile/project-management/user-stories) for each idea and a link to the API(s) you want to use for it.
 
 --------------------------------------------------------
-1. 
+1. as a user I want to log in to MyPage and then be able to post so that my friends or the world can see it.
 2. 
 3.
 ---------------------------------------------------------

@@ -1,5 +1,7 @@
 
 
+
+
 <div>
   <h1>MyChat</h1>
 
@@ -26,11 +28,42 @@
       <input type="text" placeholder="Write a message" name="chat" class="chatInputs" id="input"/>
       <button type="submit" class="chatInputs button">Send</button>
     </form>
+    
+   <!-- Modal -->
+   <div class="col-sm-4">
 
-    <button type="menu" onclick="toggleEmojiDrawer()">Emojis</button>
-    <div id="drawer" class="emoji-drawer hidden"> 
-      <% emoji.forEach(emo => { %>
-        <div class="emoji" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>"><%= emo.character %></div>
-    <% }) %> 
+  
+    
+    <div class="modal" id='exampleModal' tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Emojis</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+<!-- Modal Form -->
+<% emoji.forEach(emo => { %>
+  <div style="display: inline;" class="emoji" onclick="addEmoji(this.innerHTML)" name="<%=emo.slug %>"><%= emo.character %></div>
+<% }) %> 
+
+              <!-- Modal Form end -->
+
+
+
+            </p>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
     </div>
+<!-- button -->
+<!-- button -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Emojis
+</button>
   </main>

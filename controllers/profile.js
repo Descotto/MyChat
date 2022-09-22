@@ -7,7 +7,11 @@ const axios = require('axios');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 
+axios.get('https://avatars.dicebear.com/api/avataaars/pic.svg')
+.then(data => {
 
+    console.log('results ', results);
+});
 
 router.get('/', isLoggedIn, (req, res) => {
     const { id, name, email } = req.user.get();

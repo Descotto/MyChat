@@ -73,6 +73,8 @@ html, body {
 }
 .posts {
   margin: 0 auto;
+  margin-bottom: 40px;
+  padding-top: 20px;
   max-width: 700px;
   background-color: aliceblue;
 }
@@ -100,23 +102,6 @@ display: inline;
 }
 
 
-.emoji-drawer {
-  background-color: gray;
-  display: grid;
-
-  grid-template-columns: repeat(6, 1fr);
-
-  width: 400px;
-  height: 50px;
-
-  margin-bottom: 32px;
-  transition: opacity 0.2s;
-}
-
-.hidden {
-opacity: 0;
-}
-
 .emoji {
   text-align: center;
   font-size: 24px;
@@ -125,4 +110,8 @@ opacity: 0;
 
 .emoji:hover {
   cursor: pointer;
+}
+
+.profileBox {
+  position: fixed;
 }
