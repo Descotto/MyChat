@@ -1,6 +1,6 @@
 <h2>Homepage</h2>
 
-
+<img id="banner" src="http://<%=root%>/assets/banner.png" width="100%" height="200px">
 
 
 <div>
@@ -18,13 +18,13 @@
     <div id="gblog">
         <% messages.forEach(msg => { %>
             <div class="posts" style="border: dotted;">
-                <%= msg.content %><br>
+                <p><%= msg.content %></p><br>
                 <small>Topic: <%= msg.topic %> </small><br>
                 <p><small>By: <%= name %> </small></p>
-            <div class="commentButtons">
-             <button class="edit"><a href="/profile/edit/<%= msg.id %>">Edit</a></button>
-             <button class="delete"><a href="/profile/delete/<%= msg.id %>">Delete</a></button>
-    
-            </div>
+            
+             <button class="edit"><a href="/edit/global/<%= msg.id %>">Edit</a></button>
+             <button class="delete"><a href="/delete/global/<%= msg.id %>">Delete</a></button>
+    </div><br>
+           
     
         <% }) %> 

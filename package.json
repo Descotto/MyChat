@@ -28,6 +28,8 @@
     "supertest": "^6.2.4"
   },
   "dependencies": {
+    "@dicebear/avatars": "^4.10.5",
+    "@dicebear/pixel-art-neutral": "^4.10.5",
     "@ngneat/falso": "^6.1.0",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",

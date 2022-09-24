@@ -8,13 +8,15 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const db = require('./models');
+const path = require('path');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const apiKey = process.env.APIKEY
 console.log('works ', SECRET_SESSION);
 
-// let emojis = []; // == empty array to load emojis in
+
+
 
 
 
@@ -23,7 +25,7 @@ app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname , '/public')));
 app.use(layouts);
 
 
@@ -51,7 +53,7 @@ app.use((req, res, next) => {
 app.get('/', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
     db.gblog.findAll({order: [['createdAt', 'DESC']], limit:10, offset:0, include:[db.user]}).then((messages) => {
-        res.render('index', { id, name, email, messages});
+        res.render('index', { id, name, email, messages, root:req.get('host')});
     })
   // res.render('index');
 });

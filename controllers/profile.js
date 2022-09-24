@@ -6,11 +6,12 @@ const axios = require('axios');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
+let randomPic = '';
 
-axios.get('https://avatars.dicebear.com/api/avataaars/pic.svg')
+axios.get('https://avatars.dicebear.com/api/pixel-art-neutral/pic.svg')
 .then(data => {
 
-    console.log('results ', results);
+    console.log('results ', data.data);
 });
 
 router.get('/', isLoggedIn, (req, res) => {
@@ -42,8 +43,21 @@ router.post('/blog', isLoggedIn, async (req, res) => {
      });
 
 //get the comment for delete
+
+
 router.get('/delete/:idx', isLoggedIn, (req, res) => {
     db.blog.findOne({
+        where: {id: req.params.idx}
+    }).then(log => {
+        const id = log.id;
+        const content = log.content;
+        console.log('console log', log);
+        res.render("profile/delete", { id, content});
+    })
+});
+
+router.get('/delete/global/:idx', isLoggedIn, (req, res) => {
+    db.gblog.findOne({
         where: {id: req.params.idx}
     }).then(log => {
         const id = log.id;

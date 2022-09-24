@@ -36,7 +36,7 @@ html, body {
 .chat {
   content: '';
   width: 100%;
-  height: calc(100vh - 165px);
+  height: 50%;
   background: white;
   padding: 5px 10px;
 }
@@ -75,12 +75,19 @@ html, body {
   margin: 0 auto;
   margin-bottom: 40px;
   padding-top: 20px;
-  max-width: 700px;
+  max-width: 500px;
   background-color: aliceblue;
+  position: relative;
 }
+
 #blog {
 display: inline;
 }
+
+#gblog {
+  display: inline;
+}
+
 .delete {
   color: red;
   border-radius: 45%;
@@ -114,4 +121,8 @@ display: inline;
 
 .profileBox {
   position: fixed;
+}
+#banner {
+margin: 0 auto;
+
 }
