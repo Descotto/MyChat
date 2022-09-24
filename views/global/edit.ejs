@@ -1,0 +1,9 @@
+<h1>edit</h1>
+
+<p><%= content %> </p>
+
+<form method="POST" autocomplete="off" action=<%=`/global/new/${id}/?_method=PUT`%>>
+    <label>Edit</label>
+    <input type="text" name="editContent" value="<%= content %>">
+    <input type="submit">
+</form>

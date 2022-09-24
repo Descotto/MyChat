@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.blog.belongsTo(models.user);
+      models.blog.hasMany(models.comment);
     }
   }
   blog.init({

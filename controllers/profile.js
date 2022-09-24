@@ -52,16 +52,7 @@ router.get('/delete/:idx', isLoggedIn, (req, res) => {
     })
 });
 
-router.get('/delete/global/:idx', isLoggedIn, (req, res) => {
-    db.gblog.findOne({
-        where: {id: req.params.idx}
-    }).then(log => {
-        const id = log.id;
-        const content = log.content;
-        console.log('console log', log);
-        res.render("profile/delete", { id, content});
-    })
-});
+
 //====edit comments
 // first grab the comment
 

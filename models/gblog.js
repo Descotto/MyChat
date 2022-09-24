@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.gblog.belongsTo(models.user);
+      models.gblog.hasMany(models.comment);
     }
   }
   gblog.init({

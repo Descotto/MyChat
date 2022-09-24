@@ -16,22 +16,24 @@
 </div>
     <h3>Global Wall</h3>
     <div id="gblog">
-        <% messages.forEach(msg => { %>
+        <% gblogs.forEach(gb => { %>
             <div class="posts" style="border: dotted;">
-                <p><%= msg.content %></p><br>
-                <small>Topic: <%= msg.topic %> </small><br>
-                <p><small>By: <%= name %> </small></p>
+                <p><%= gb.content %></p><br>
+                <small>Topic: <%= gb.topic %> </small><br>
+                <p><small>By: <%= gb.user.name %> </small></p>
             
-             <button class="edit"><a href="/edit<%= msg.id %>">Edit</a></button>
-             <button class="delete"><a href="/delete<%= msg.id %>">Delete</a></button>
-             <form action="/comment/<%=msg.id%>" method="POST">
+             <button class="edit"><a href="/global/edit/<%= gb.id %>">Edit</a></button>
+             <button class="delete"><a href="/global/delete/<%= gb.id %>">Delete</a></button>
+             <form action="/<%=gb.id%>/comment" method="POST">
                 <input type="text" name="comments">
-                <button type="submit">Post</button>
-                <% if (comments.content) { %> 
-                <small><%= comments.content %> </small>
-                <% }; %> 
-                          
+                <button type="submit">Post</button>           
             </form>
+            <% if (Array.isArray(gb.comments) && gb.comments.length > 0) { %>
+                <%gb.comments.forEach(comment => { %>
+                    <small><%= comment.user.name %> </small>
+                   <small><%= comment.content %> </small>
+              <%  }) %>
+            <% } %> 
     </div><br>
            
     
