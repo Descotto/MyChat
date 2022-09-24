@@ -75,16 +75,25 @@
 
 <!-- ----------------------------------------- -->
 <div id="blog">
-   <% let blogPost=blog.reverse(); %>
-      <% blogPost.forEach(msg=> { %>
+      <% blog.forEach(bl => { %>
 
          <div class="posts" style="border: dotted;">
-            <h4><%- msg.content %></h4>
-            <small style="float: right;">Date: <%= msg.createdAt %> </small>
+            <h4><%- bl.content %></h4>
+            <small style="float: right;">Date: <%= bl.createdAt %> </small>
                
-                  <br><button class="edit"><a href="/profile/edit/<%= msg.id %>">Edit</a></button>
-                  <button class="delete"><a href="/profile/delete/<%= msg.id %>">Delete</a></button>
-               
+                  <br><button class="edit"><a href="/profile/edit/<%= bl.id %>">Edit</a></button>
+                  <button class="delete"><a href="/profile/delete/<%= bl.id %>">Delete</a></button>
+
+                  <form action="/profile/<%=bl.id%>/comment" method="POST" autocomplete="off">
+                     <input type="text" name="comments">
+                     <button type="submit">Post</button>           
+                 </form>
+                 <% if (Array.isArray(bl.comments) && bl.comments.length > 0) { %>
+                  <%bl.comments.forEach(comment => { %>
+                      <p><%= comment.user.name %> :<small> <%= comment.content %> </small></p><br>
+                     
+                <%  }) %>
+              <% } %> 
             </div><br>
                <% }) %>
         

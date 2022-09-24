@@ -52,7 +52,7 @@ app.use((req, res, next) => {
 //=== HOME PAGE ===//
 app.get('/', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
-  db.gblog.findAll({ order: [['createdAt', 'DESC']], limit: 10,
+  db.gblog.findAll({ order: [['createdAt', 'DESC']], limit: 20,
    offset: 0,
    include: [db.user, {
     model: db.comment,
