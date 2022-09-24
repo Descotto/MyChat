@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname , '/public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(layouts);
 
 
@@ -52,10 +52,11 @@ app.use((req, res, next) => {
 //=== HOME PAGE ===//
 app.get('/', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
-    db.gblog.findAll({order: [['createdAt', 'DESC']], limit:10, offset:0, include:[db.user]}).then((messages) => {
-        res.render('index', { id, name, email, messages, root:req.get('host')});
+  db.comment.findAll().then(comments => {
+    db.gblog.findAll({ order: [['createdAt', 'DESC']], limit: 10, offset: 0, include: [db.user] }).then((messages) => {
+      res.render('index', { id, name, email, messages, comments, root: req.get('host') });
     })
-  // res.render('index');
+  })
 });
 
 //=== post new global
@@ -64,15 +65,31 @@ app.post('/new', async (req, res) => {
   let id = req.user.id;
   let topic = req.body.topic;
   db.gblog.create({
-      content: content,
-      topic: topic,
-      userId: id
-     }).then(() => {
-     res.redirect('/');
-    }).catch(err => {
-     console.log(err);
-    })
+    content: content,
+    topic: topic,
+    userId: id
+  }).then(() => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+  })
+});
+
+//== Post new comments
+app.post('/comment/:idx', (req, res) => {
+  let comments = req.body.comments;
+  let id = req.user.id;
+  db.comment.create({
+    content: rq.body.comments,
+    userId: req.user.id,
+    gblogId: req.body.idx
+  }).then(() => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log('Error creating comment', err);
   });
+});
+
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/chat', require('./controllers/chat'));

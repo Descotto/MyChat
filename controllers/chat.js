@@ -38,7 +38,7 @@ router.get('/', isLoggedIn, (req, res) => {
 
 
 
-router.post('/send', async (req, res) => {
+router.post('/send', isLoggedIn, async (req, res) => {
   // we now have access to the user info (req.body);
   let content = req.body.chat; // goes and us access to whatever key/value inside of the object
   let id = req.user.id;

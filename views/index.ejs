@@ -1,10 +1,10 @@
-<h2>Homepage</h2>
+
 
 <img id="banner" src="http://<%=root%>/assets/banner.png" width="100%" height="200px">
 
 
 <div>
-    <form action="/new/" method="post" name="gblog" autocomplete="off">
+    <form action="/new/" method="POST" name="gblog" autocomplete="off">
         <input type="text" name="newBlog" placeholder="Tell the world!">
         <label for="topic">Topic</label><br>
         <input type="text" name="topic" placeholder="be cool">
@@ -22,8 +22,16 @@
                 <small>Topic: <%= msg.topic %> </small><br>
                 <p><small>By: <%= name %> </small></p>
             
-             <button class="edit"><a href="/edit/global/<%= msg.id %>">Edit</a></button>
-             <button class="delete"><a href="/delete/global/<%= msg.id %>">Delete</a></button>
+             <button class="edit"><a href="/edit<%= msg.id %>">Edit</a></button>
+             <button class="delete"><a href="/delete<%= msg.id %>">Delete</a></button>
+             <form action="/comment/<%=msg.id%>" method="POST">
+                <input type="text" name="comments">
+                <button type="submit">Post</button>
+                <% if (comments.content) { %> 
+                <small><%= comments.content %> </small>
+                <% }; %> 
+                          
+            </form>
     </div><br>
            
     

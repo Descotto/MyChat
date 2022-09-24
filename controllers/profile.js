@@ -8,11 +8,7 @@ const axios = require('axios');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 let randomPic = '';
 
-axios.get('https://avatars.dicebear.com/api/pixel-art-neutral/pic.svg')
-.then(data => {
 
-    console.log('results ', data.data);
-});
 
 router.get('/', isLoggedIn, (req, res) => {
     const { id, name, email } = req.user.get();
@@ -82,7 +78,7 @@ router.get('/edit/:idx', isLoggedIn, async (req, res) => {
 
 
 //=== now Edit
-router.post('/edit/new/:idx', (req, res) => {
+router.post('/edit/new/:idx', isLoggedIn, (req, res) => {
     newContent = JSON.stringify(req.body.editContent)
     db.blog.update(
         {content: req.body.editContent},
