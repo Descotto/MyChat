@@ -10,6 +10,7 @@ const axios = require('axios');
 const db = require('./models');
 const path = require('path');
 const { SMALLINT } = require('sequelize');
+const methodOverride = require('method-override');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -23,7 +24,7 @@ console.log('works ', SECRET_SESSION);
 
 
 app.set('view engine', 'ejs');
-
+app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')));
@@ -107,7 +108,7 @@ app.get('/global/edit/:idx', isLoggedIn, async (req, res) => {
   })
 });
 //=== now Edit
-app.post('/global/new/:idx', isLoggedIn, (req, res) => {
+app.put('/global/new/:idx', isLoggedIn, (req, res) => {
   db.gblog.update(
     { content: req.body.editContent + ' --e' },
     { where: { id: req.params.idx } }

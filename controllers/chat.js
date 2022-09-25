@@ -4,6 +4,7 @@ const db = require('../models');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const axios = require('axios');
 
+
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const apiKey = process.env.APIKEY
 

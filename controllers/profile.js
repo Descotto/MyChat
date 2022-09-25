@@ -5,6 +5,8 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 const axios = require('axios');
 
 
+
+
 const SECRET_SESSION = process.env.SECRET_SESSION;
 
 
@@ -91,7 +93,7 @@ router.get('/edit/:idx', isLoggedIn, async (req, res) => {
 
 
 //=== now Edit
-router.post('/edit/new/:idx', isLoggedIn, (req, res) => {
+router.put('/edit/new/:idx', isLoggedIn, (req, res) => {
     newContent = JSON.stringify(req.body.editContent)
     db.blog.update(
         { content: req.body.editContent },
