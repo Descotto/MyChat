@@ -86,7 +86,7 @@
 
                   <form action="/profile/<%=bl.id%>/comment" method="POST" autocomplete="off">
                      <input type="text" name="comments">
-                     <button type="submit">Post</button>           
+                     <button class="reply" type="submit">/r</button>           
                  </form>
                  <% if (Array.isArray(bl.comments) && bl.comments.length > 0) { %>
                   <%bl.comments.forEach(comment => { %>

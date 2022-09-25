@@ -61,7 +61,7 @@ html, body {
 
 @media all and (min-width: 500px) {
   .chat {
-    height: calc(100vh - 160px);
+    height: calc(100vh - 260px);
   }
   .chatInputs {
     width: calc(100% - 180px);
@@ -97,6 +97,10 @@ display: inline;
   border-radius: 45%;
   float: right;
 }
+.reply {
+  border-radius: 50%;
+  background-color: aqua;
+}
 .commentButtons {
   display: inline;
 }
@@ -125,4 +129,7 @@ display: inline;
 #banner {
 margin: 0 auto;
 
+}
+.notFound {
+  text-align: center;
 }

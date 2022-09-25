@@ -27,7 +27,7 @@ router.get('/', isLoggedIn, (req, res) => {
   db.emoji.findAll()
     .then(emo => {
       let emoji = emo.slice(0, 200);
-      db.message.findAll({ order: [['createdAt', 'DESC']], limit: 10, offset: 0, include: [db.user] }).then((messages) => {
+      db.message.findAll({ order: [['createdAt', 'DESC']], limit: 15, offset: 0, include: [db.user] }).then((messages) => {
         res.render('chat', { id, name, email, messages, emoji});
       })
     })

@@ -9,6 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const db = require('./models');
 const path = require('path');
+const { SMALLINT } = require('sequelize');
 
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -107,10 +108,8 @@ app.get('/global/edit/:idx', isLoggedIn, async (req, res) => {
 });
 //=== now Edit
 app.post('/global/new/:idx', isLoggedIn, (req, res) => {
-  const edit = ' _edit';
-  newContent = JSON.stringify(req.body.editContent)
   db.gblog.update(
-    { content: req.body.editContent + ' --edited' },
+    { content: req.body.editContent + ' --e' },
     { where: { id: req.params.idx } }
   )
     .then((results) => {
@@ -147,11 +146,15 @@ app.post('/global/delete/dl/:idx', isLoggedIn, function (req, res, next) {
     });
 });
 
+
 app.use('/auth', require('./controllers/auth'));
 app.use('/chat', require('./controllers/chat'));
 app.use('/profile', require('./controllers/profile'));
 
-
+//== 404
+app.get('*', (req, res) => {
+  res.render('global/404');
+});
 
 const PORT = process.env.PORT || 3000;
 const appserver = app.listen(PORT, () => {
