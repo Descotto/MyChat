@@ -1,3 +1,4 @@
+MyPage
 ![alt text](./public/assets/banner.png)
 
 
@@ -28,7 +29,20 @@ npm install bcryptjs connect-flash passport passport-local express-session metho
 - [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
 - [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 
-`4` Make a commit
+`4` Create tables
+```text
+sequelize model:create --name user --attributes name:string,email:string,password:string
+
+sequelize model:create --name blog --attributes userId:integer,content:string
+
+sequelize model:create --name global --attributes userId:integer,content:string
+
+sequelize model:create --name chat --attributes userId:integer,content:string
+
+sequelize model:create --name comment --attributes userId:integer,blogId:integer,globalId:integer,content:string
+```
+
+`5` Make a commit
 
 ```text
 git add .
@@ -36,3 +50,21 @@ git commit -m "Install dependencies for project"
 ```
 
 ## Introduction
+
+MyPage is a social media plataform that aims to make the internet the fun place it once was.
+The site has a global wall where you can share your thoughts with everyone as well as a global chat room.
+It also provides customizable profiles for everyone.
+
+## Technologies
+html5
+css
+javascript
+sql
+
+## MyPage
+To begin, signup in order to use the app.
+
+the navigation menu at the top will then show "Profile"
+
+try rich text in your profile posts.
+
