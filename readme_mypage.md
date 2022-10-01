@@ -16,20 +16,38 @@ MyPage
 npm install
 ```
 
-`3` We need to install some packages that will be used for `authentication`. Those are the following packages:
+`3` Now we create an .env file
+``` text
+touch .env
+```
+in the .env file we type
 
 ```text
-npm install bcryptjs connect-flash passport passport-local express-session method-override
+SECRET_SESSION=livingthelife
 ```
--  [bcryptjs](https://www.npmjs.com/package/bcryptjs): A library to help you hash passwords. ( [wikipedia](https://en.wikipedia.org/wiki/Bcrypt) ) 
-    - Blowfish has a 64-bit block size and a variable key length from 32 bits up to 448 bits.
-- [connect-flash](https://github.com/jaredhanson/connect-flash): The flash is an area of the session used for storing messages that will be used to to display to the user. Flash is typically used with redirects.
-- [passport](https://www.passportjs.org/docs/): Passport is authentication middleware for Node.js. It is designed to do one thing authenticate requests. There are over 500+ strategies used to authenticate a user; however, we will be using one - *passport-local* Passport is authentication middleware for Node. It is designed to serve a singular purpose: authenticate requests
-- [passport-local](http://www.passportjs.org/packages/passport-local/): The local authentication strategy authenticates users using a username and password. The strategy requires a verify callback, which accepts these credentials and calls done providing a user. [passport-local](http://www.passportjs.org/packages/passport-local/)
-- [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
-- [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
+now we need an API key.
+go to https://emoji-api.com and get the API key
+next we added to the .env file
 
-`4` tables
+```text
+APIKEY=your-key-goes-here
+```
+
+`4` create database
+```text
+npm install sequelize-cl
+
+npx sequelize-cli db:create name-your-databse
+```
+
+`5` Migrate and seed
+```text
+npx sequelize-cli db:migrate
+
+npx sequelize-cli db:seed:all
+```
+
+## Tables
 | Name     | Attributes | Attributes | Attributes | Attributes | Attributes | Attributes |
 | -------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 | User     | name       | email      | password   | createdAt  | updatedAt  |
