@@ -108,7 +108,7 @@ router.put('/edit/new/:idx', isLoggedIn, (req, res) => {
         })
 });
 //=== Delete route
-router.post('/delete/dl/:idx', isLoggedIn, function (req, res, next) {
+router.delete('/delete/dl/:idx', isLoggedIn, function (req, res, next) {
     db.blog.findOne({ where: { id: req.params.idx } }).then((blog) => {
         console.log('blog deleted', blog);
         blog.destroy();

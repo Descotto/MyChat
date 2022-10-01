@@ -135,7 +135,7 @@ app.get('/global/delete/:idx', isLoggedIn, (req, res) => {
   })
 });
 //=== Delete route
-app.post('/global/delete/dl/:idx', isLoggedIn, function (req, res, next) {
+app.delete('/global/delete/dl/:idx', isLoggedIn, function (req, res, next) {
   db.gblog.findOne({ where: { id: req.params.idx } }).then((gblog) => {
     console.log('blog deleted', gblog);
     gblog.destroy();

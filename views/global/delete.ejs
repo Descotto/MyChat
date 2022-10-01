@@ -4,6 +4,6 @@
     <h2>" <%= content %> "</h2><br>
     <p>will be permanently deleted.</p>
 </div>
-<form action="/global/delete/dl/<%=id%>" method="POST">
+<form action="/global/delete/dl/<%=id%>/?_method=DELETE" method="POST">
     <button type="submit">Confirm</button>
 </form>
